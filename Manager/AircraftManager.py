@@ -8,7 +8,7 @@ class AircraftManager:
     def add_aircraft(self, aircraft):
         self.aircraft_list.append(aircraft)
 
-    def find_all_with_max_speed_more_than(self, speed):
+    def find_with_max_speed_more_than(self, speed):
         return list(filter(lambda a: a.max_speed > speed, self.aircraft_list))
 
     def find_with_manufacturer(self, manufacturer):

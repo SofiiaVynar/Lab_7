@@ -1,7 +1,11 @@
-class Helicopter:
-    __instance = None
+from Model.Aircraft import Aircraft
 
-    def __init__(self, model=None, current_altitude=0, max_altitude=0, fuel_capacity=0, current_fuel=0, ID=100):
+
+class Helicopter(Aircraft):
+
+    def __init__(self, manufacturer, max_speed, model=None, current_altitude=0, max_altitude=0, fuel_capacity=0,
+                 current_fuel=0, ID=100,):
+        super().__init__(manufacturer, max_speed)
         self.ID = ID
         self.model = model
         self.current_altitude = current_altitude
@@ -30,8 +34,14 @@ class Helicopter:
         else:
             self.current_fuel = self.fuel_capacity
 
-    @staticmethod
-    def get_instance():
-        if Helicopter.__instance is None:
-            Helicopter.__instance = Helicopter()
-        return Helicopter.__instance
+    def get_max_flying_distance(self):
+        return int(self.current_fuel / self.fuel_capacity * self.max_speed)
+
+    def get_max_delivery_weight(self):
+        return 0
+
+    def __str__(self):
+        return f"Helicopter(manufacturer={self.manufacturer}, max_speed={self.max_speed}, " \
+               f"model={self.model}, current_altitude={self.current_altitude}, " \
+               f"max_altitude={self.max_altitude}, fuel_capacity={self.fuel_capacity}, " \
+               f"current_fuel={self.current_fuel})"
