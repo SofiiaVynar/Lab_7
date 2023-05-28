@@ -1,8 +1,9 @@
-from Model.Aircraft import Aircraft
+from Model.aircraft import Aircraft
 
 
 class Plane(Aircraft):
     half_weight = 1.6
+    power_type = {"in_line__engine", "v_type_engine"}
 
     def __init__(self, manufacturer, max_speed, wings_span, weight):
         super().__init__(manufacturer, max_speed)

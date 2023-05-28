@@ -1,7 +1,9 @@
-from Model.Aircraft import Aircraft
+from Model.aircraft import Aircraft
 
 
 class Glider(Aircraft):
+    power_type = {"electric_engine", "jet_engine"}
+
     def __init__(self, manufacturer, max_speed, acceleration_speed, wing_chord_length):
         super().__init__(manufacturer, max_speed)
         self.acceleration_speed = acceleration_speed

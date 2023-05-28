@@ -1,7 +1,9 @@
-from Model.Aircraft import Aircraft
+from Model.aircraft import Aircraft
 
 
 class Drone(Aircraft):
+    power_type = {"li_po_batteries", "ni_cad_batteries"}
+
     def __init__(self, manufacturer, max_speed, battery_capacity, energy_consumption_per_minute):
         super().__init__(manufacturer, max_speed)
         self.battery_capacity = battery_capacity
