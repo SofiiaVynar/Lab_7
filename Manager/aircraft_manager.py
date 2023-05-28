@@ -1,3 +1,5 @@
+from Manager.decorators import check_battery, print_length
+
 
 class AircraftManager:
     def __init__(self):
@@ -24,12 +26,14 @@ class AircraftManager:
     def get_max_delivery_weight_list(self):
         return [aircraft.get_max_delivery_weight() for aircraft in self.aircraft_list]
 
+    @print_length
     def list_with_numbers(self):
         return [f"{index + 1}: {aircraft}" for index, aircraft in enumerate(self.aircraft_list)]
 
     def method_results(self):
-        return [(aircraft, aircraft.get_max_delivery_weight()) for aircraft in self.aircraft_list]
+        return ((aircraft, aircraft.get_max_delivery_weight()) for aircraft in self.aircraft_list)
 
+    @check_battery('C:\\Users\\Admin\\PycharmProjects\\pythonProject2\\calls.txt')
     def check_battery_presence(self, battery_presence):
         return {"all": all(battery_presence(aircraft) for aircraft in self.aircraft_list),
                 "any": any(battery_presence(aircraft) for aircraft in self.aircraft_list)}

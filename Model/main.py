@@ -1,5 +1,3 @@
-import functools
-
 from Manager.aircraft_manager import AircraftManager
 from Manager.set_manager import SetManager
 from Model.drone import Drone
@@ -65,6 +63,7 @@ def main():
     print("\nAll power types:")
     for power_type in set_manager:
         print(power_type)
+
 
 if __name__ == "__main__":
     main()
