@@ -1,8 +1,9 @@
-from Manager.AircraftManager import AircraftManager
-from Model.Drone import Drone
-from Model.Glider import Glider
-from Model.Helicopter import Helicopter
-from Model.Plane import Plane
+from Manager.aircraft_manager import AircraftManager
+from Manager.set_manager import SetManager
+from Model.drone import Drone
+from Model.glider import Glider
+from Model.helicopter import Helicopter
+from Model.plane import Plane
 
 
 def main():
@@ -32,6 +33,36 @@ def main():
     print("Searched manufacturer:")
     for aircraft in searched_manufacturer:
         print(aircraft)
+
+    print("\n")
+    print("Max delivery weight list:")
+    print(manager.get_max_delivery_weight_list())
+
+    print("\n")
+    print("List with numbers:")
+    for aircraft in manager.list_with_numbers():
+        print(aircraft)
+
+    print("\n")
+    print("Method results:")
+    for aircraft, result in manager.method_results():
+        print(f"{aircraft}: {result}")
+
+    print("\nObjects with int:")
+    for aircraft in manager.aircraft_list:
+        int_objects = aircraft.get_type(int)
+        print(f"{aircraft.__class__.__name__}: {int_objects}")
+
+    print("\n")
+    battery_presence = lambda aircraft: isinstance(aircraft, Drone)
+    battery_conditions_result = manager.check_battery_presence(battery_presence)
+    print("All have batteries:", battery_conditions_result["all"])
+    print("Any have batteries:", battery_conditions_result["any"])
+
+    set_manager = SetManager(manager)
+    print("\nAll power types:")
+    for power_type in set_manager:
+        print(power_type)
 
 
 if __name__ == "__main__":
