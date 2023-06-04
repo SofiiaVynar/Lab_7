@@ -9,8 +9,8 @@ from Model.plane import Plane
 def main():
     manager = AircraftManager()
 
-    manager.add_aircraft(Helicopter("Fly-High", 500, "Tiny", 400, 700, 400, 300))
-    manager.add_aircraft(Helicopter("Fly-High", 300, "Tin", 200, 500, 600, 400))
+    manager.add_aircraft(Helicopter("Fly-High", 500, "Tiny", 400, 300, 400, 300))
+    manager.add_aircraft(Helicopter("Fly-High", 300, "Tin", 200, 100, 600, 400))
     manager.add_aircraft(Drone("Sin", 70, 2000, 10))
     manager.add_aircraft(Drone("Son", 60, 1500, 8))
     manager.add_aircraft(Plane("Vinnie", 600, 20, 10000))
@@ -63,6 +63,10 @@ def main():
     print("\nAll power types:")
     for power_type in set_manager:
         print(power_type)
+
+    for aircraft in manager.aircraft_list:
+        if isinstance(aircraft, Helicopter):
+            aircraft.take_off()
 
 
 if __name__ == "__main__":
