@@ -1,3 +1,5 @@
+from Exception.exception import TakeOffException
+from Manager.logger import logged
 from Model.aircraft import Aircraft
 
 
@@ -16,7 +18,10 @@ class Helicopter(Aircraft):
         self.current_fuel = current_fuel
         self.ID = id
 
+    @logged(TakeOffException, "file")
     def take_off(self):
+        if self.current_altitude > self.max_altitude:
+            raise TakeOffException("Can't take off, because of the current_altitude")
         self.current_altitude += 100
 
     def ascend(self, altitude):
